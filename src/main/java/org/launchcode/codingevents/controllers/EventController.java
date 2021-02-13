@@ -21,7 +21,7 @@ public class EventController {
         events.add("SpringOne Platform");
 //        model.addAttribute("events", events);
         model.addAttribute("events", events);
-        return "events/index";
+        return "aevents/index";
     }
 
 }
