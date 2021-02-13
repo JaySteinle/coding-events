@@ -9,8 +9,10 @@
 <h1>All Events</h1>
 
 <!--<nav>-->
+
+<p th:unless="${events} and ${events.size()}">No events!</p>
 <ul>
-    <th:block th:each="aevent : ${events}">
+    <th:block th:each="event : ${events}">
 <!--    <li><a href= "/events">All Events</a></li>-->
         <li th:text= "${event}"></li>
     </th:block>

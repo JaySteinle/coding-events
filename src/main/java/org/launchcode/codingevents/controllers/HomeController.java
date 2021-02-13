@@ -8,7 +8,7 @@ public class HomeController {
 
     @GetMapping
     public String index(){
-        return "aevents/index";
+        return "events/index";
     }
 
 }
