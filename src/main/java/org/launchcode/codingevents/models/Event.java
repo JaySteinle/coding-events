@@ -30,9 +30,7 @@ public class Event {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setDescription(String description) {this.description = description; }
 
     public int getId() {
         return id;

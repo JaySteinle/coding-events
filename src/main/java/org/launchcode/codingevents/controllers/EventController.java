@@ -4,10 +4,7 @@ import org.launchcode.codingevents.data.EventData;
 import org.launchcode.codingevents.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -49,5 +46,23 @@ public class EventController {
         }
         return "redirect:";
     }
+
+    @GetMapping("/edit/eventId")
+    public String displayEditForm( Model model, @PathVariable int eventId){
+        Event event=EventData.getById(eventId);
+        model.addAttribute("title", event.getName());
+        model.addAttribute("event", event);
+        return "redirect:";
+    }
+
+    @PostMapping
+    public String processEditForm(Model model, int eventId, String name, String description){
+        EventData.getById(eventId).setName(name);
+        EventData.getById(eventId).setDescription(description);
+
+
+        return "redirect:";
+    }
+
 
 }
