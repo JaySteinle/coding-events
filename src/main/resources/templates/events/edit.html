@@ -8,18 +8,18 @@
 <form method="post" th:action="@{/events/edit}">
     <div class="form-group">
         <label>Name
-            <input type="text" th:value="${event.name}" th:name="${eventName}" class="form-control">
+            <input type="text" th:value="${name}" name="name" class="form-control">
         </label>
     </div>
 
     <div class="form-group">
         <label>Description
-            <input type="text" th:value="${event.description}" th:name="${eventDescription}" class="form-control">
+            <input type="text" th:value="${description}" name="description" class="form-control">
         </label>
     </div>
 
     <div class="form-group">
-        <input type="hidden" th:value="${event.id}" name="eventId" />
+        <input type="hidden" th:value="${eventId}" name="eventId" />
     </div>
 
     <div class="form-group">
