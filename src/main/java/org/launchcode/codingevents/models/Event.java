@@ -8,7 +8,7 @@ public class Event {
     private int id;
     private static int nextId = 1;
 
-
+    @Size
     private String name;
     private String description;
 
