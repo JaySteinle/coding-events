@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 
 @Controller
@@ -66,21 +67,25 @@ public class EventController {
         return "redirect:";
     }
 
-//    @GetMapping("edit/{eventId}")
-//    public String displayEditForm( Model model, @PathVariable int eventId){
-//        Optional<Event> event= eventRepository.findById(eventId);
-//        model.addAttribute("title", event);
-//        model.addAttribute("events", event);
-//        return "events/edit";
-//    }
+    @GetMapping("edit/{eventId}")
+    public String displayEditForm( Model model, @PathVariable int eventId){
+        Optional<Event> event= eventRepository.findById(eventId);
+        model.addAttribute("title", event.get());
+        model.addAttribute("events", event);
+        return "events/edit";
+    }
 
-//    @PostMapping("edit")
-//    public String processEditForm(int eventId, String name, String description){
-//        Optional<Event> event = eventRepository.findById(eventId);
-//        event(name);
-//        event(description);
-//        return "redirect:";
-//    }
+    @PostMapping("edit")
+    public String processEditForm(@RequestParam int eventId, @RequestParam String name, @RequestParam String description, Event event1){
+        Optional<Event> event = eventRepository.findById(eventId);
+        if(event.isPresent()){
+            event1 = event.get();
+            event1.setName(name);
+            event1.setDescription(description);
+            eventRepository.save(event1);
+        }
+        return "redirect:";
+    }
 
 
 }
